@@ -32,32 +32,40 @@ main {
     width: 100%;
     margin: 20px;
     padding: 20px;
+    display: flex;
+    flex-direction: column; /* Align chat and input vertically */
 }
 
 .chat {
-    height: 300px;
+    flex-grow: 1; /* Expand to fill available space */
     overflow-y: auto;
     border: 1px solid #ccc;
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 5px;
+    margin-bottom: 10px; /* Add space below the chat */
 }
 
 .user-input {
-    width: 70%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
 .send-button {
-    width: 25%;
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin-left: 10px; /* Add space between input and button */
 }
 
 /* Style chat messages */
@@ -68,12 +76,12 @@ main {
 }
 
 /* Style the chatbot's messages */
-.chat div:nth-child(even) {
+.chat div.chatbot {
     background-color: #f2f2f2;
 }
 
 /* Style the user's messages */
-.chat div:nth-child(odd) {
+.chat div.you {
     background-color: #007bff;
     color: #fff;
 }
@@ -81,10 +89,4 @@ main {
 /* Style message text */
 .chat div strong {
     font-weight: bold;
-}
-
-/* Style the user's input and send button in a row */
-.chatbox .user-input, .chatbox .send-button {
-    display: inline-block;
-    vertical-align: middle;
 }
