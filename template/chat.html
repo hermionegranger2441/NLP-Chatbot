@@ -7,45 +7,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Chatbot</h1>
-    <div id="chatbox">
-        <div id="chat">
-            <!-- Chat messages will be displayed here -->
-        </div>
-        <input type="text" id="user_input" placeholder="Type a message...">
-        <button id="send">Send</button>
-    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="chatbox">
+            <div class="chat" id="chat">
+                <!-- Chat messages will be displayed here -->
+            </div>
+            <input type="text" id="user_input" class="user-input" placeholder="Type a message...">
+            <button id="send" class="send-button">Send</button>
+        </section>
+    </main>
 
-    <script>
-        const chatbox = document.getElementById('chat');
-        const user_input = document.getElementById('user_input');
-        const send_button = document.getElementById('send');
+    <footer>
+        <p>&copy; 2023 Chatbot Inc. All rights reserved.</p>
+    </footer>
 
-        // Function to add a message to the chatbox
-        function addMessage(user, message) {
-            const messageElement = document.createElement('div');
-            messageElement.innerHTML = `<strong>${user}:</strong> ${message}`;
-            chatbox.appendChild(messageElement);
-        }
-
-        send_button.addEventListener('click', () => {
-            const userMessage = user_input.value;
-            addMessage('You', userMessage);
-            
-            fetch('/send', {
-                method: 'POST',
-                body: JSON.stringify({ user_input: userMessage }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                addMessage('Chatbot', data.response);
-                user_input.value = '';
-            })
-            .catch(error => console.error(error));
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
