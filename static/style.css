@@ -1,0 +1,92 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+}
+
+.chatbox {
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Align chat and input vertically */
+}
+
+.chat {
+    flex-grow: 1; /* Expand to fill available space */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Add space below the chat */
+}
+
+.user-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+}
+
+.send-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px; /* Add space between input and button */
+}
+
+/* Style chat messages */
+.chat div {
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Style the chatbot's messages */
+.chat div.chatbot {
+    background-color: #f2f2f2;
+}
+
+/* Style the user's messages */
+.chat div.you {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Style message text */
+.chat div strong {
+    font-weight: bold;
+}
