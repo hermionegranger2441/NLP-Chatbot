@@ -1,5 +1,7 @@
-import nltk
+from flask import Flask, render_template, request, jsonify
 from nltk.chat.util import Chat, reflections
+
+app = Flask(__name__)
 
 pairs = [
     ["hi|hello|hey", ["Hello!", "Hi there!", "Hey!"]],
@@ -10,15 +12,15 @@ pairs = [
 
 chatbot = Chat(pairs, reflections)
 
-def chat_with_user():
-    print("Hello! I'm a chatbot. Type 'quit' to exit.")
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() == "quit":
-            print("Chatbot: Goodbye!")
-            break
-        response = chatbot.respond(user_input)
-        print("Chatbot:", response)
+@app.route('/')
+def index():
+    return render_template('chat.html')
 
-if __name__ == "__main__":
-    chat_with_user()
+@app.route('/send', methods=['POST'])
+def send():
+    user_input = request.json['user_input']
+    response = chatbot.respond(user_input)
+    return jsonify({'response': response})
+
+if __name__ == '__main__':
+    app.run(debug=True)
